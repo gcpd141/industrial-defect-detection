@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 机器视觉算法工程师</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 40px 20px; background: #f5f5f5; }
+        .resume { background: white; padding: 50px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { font-size: 28px; color: #2c3e50; margin-bottom: 10px; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
+        h2 { font-size: 20px; color: #2c3e50; margin: 30px 0 15px; padding-left: 10px; border-left: 4px solid #3498db; }
+        h3 { font-size: 16px; color: #34495e; margin: 20px 0 10px; }
+        .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 20px 0; padding: 20px; background: #ecf0f1; border-radius: 6px; }
+        .contact-item { display: flex; align-items: center; gap: 8px; }
+        .contact-label { font-weight: 600; color: #7f8c8d; min-width: 80px; }
+        .contact-value { color: #2c3e50; }
+        .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .skill-category { background: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 3px solid #3498db; }
+        .skill-category h4 { color: #2c3e50; margin-bottom: 8px; font-size: 14px; }
+        .skill-category ul { list-style: none; padding-left: 0; }
+        .skill-category li { padding: 3px 0; color: #555; font-size: 14px; }
+        .project { margin: 25px 0; padding: 20px; background: #f8f9fa; border-radius: 6px; }
+        .project-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+        .project-title { font-size: 18px; font-weight: 600; color: #2c3e50; }
+        .project-tech { font-size: 13px; color: #3498db; background: #e8f4f8; padding: 4px 10px; border-radius: 4px; }
+        .project ul { margin: 10px 0 10px 20px; }
+        .project li { margin: 5px 0; color: #555; }
+        .education { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+        .education-item { background: #f8f9fa; padding: 15px; border-radius: 6px; }
+        .education-item p { margin: 3px 0; font-size: 14px; }
+        .highlight { color: #e74c3c; font-weight: 600; }
+        .note { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 6px; margin: 20px 0; font-size: 14px; color: #856404; }
+        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #7f8c8d; font-size: 13px; }
+        @media print { body { background: white; } .resume { box-shadow: none; padding: 30px; } }
+        @media (max-width: 600px) { .resume { padding: 25px; } .contact { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <h1>📄 个人简历</h1>
+        
+        <div class="contact">
+            <div class="contact-item">
+                <span class="contact-label">姓名:</span>
+                <span class="contact-value">[你的姓名]</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">年龄:</span>
+                <span class="contact-value">20 岁</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">学历:</span>
+                <span class="contact-value">专科（应届）</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">专业:</span>
+                <span class="contact-value">[你的专业]</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">电话:</span>
+                <span class="contact-value">[你的电话]</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">邮箱:</span>
+                <span class="contact-value">296068696@qq.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">GitHub:</span>
+                <span class="contact-value">[上传后填入]</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">求职:</span>
+                <span class="contact-value highlight">机器视觉算法工程师 / AI 视觉工程师</span>
+            </div>
+        </div>
+
+        <h2>🛠️ 技能清单</h2>
+        <div class="skill-grid">
+            <div class="skill-category">
+                <h4>编程语言</h4>
+                <ul>
+                    <li>Python：熟练，独立完成全流程</li>
+                    <li>C/C++：基础，能阅读修改代码</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>深度学习</h4>
+                <ul>
+                    <li>PyTorch：迁移学习、数据增强</li>
+                    <li>OpenCV：图像预处理、实时处理</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>视觉技术</h4>
+                <ul>
+                    <li>目标检测（YOLO 系列）</li>
+                    <li>图像分类（ResNet、EfficientNet）</li>
+                    <li>工业缺陷检测</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>工程能力</h4>
+                <ul>
+                    <li>Gradio/Streamlit 界面</li>
+                    <li>Git 版本管理</li>
+                    <li>Linux/Windows 跨平台</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📦 项目经验</h2>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">工业表面缺陷检测系统</span>
+                <span class="project-tech">PyTorch · ResNet18 · OpenCV · Gradio</span>
+            </div>
+            <p><strong>时间：</strong>2026.03 | <strong>角色：</strong>独立开发</p>
+            <ul>
+                <li>设计数据生成方案，模拟四种工业缺陷（划痕/斑点/脏污/裂纹）</li>
+                <li>使用 ResNet18 预训练模型迁移学习，小样本场景达 <strong>90%+ 准确率</strong></li>
+                <li>实现数据增强策略（翻转/旋转/颜色抖动），提升泛化能力</li>
+                <li>开发 Gradio Web 界面，端到端图片上传 - 预测 - 结果展示</li>
+            </ul>
+            <p><strong>GitHub：</strong><a href="#">[项目链接]</a></p>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">二次元目标实时追踪系统</span>
+                <span class="project-tech">Python · OpenCV · YOLO · PyQt</span>
+            </div>
+            <p><strong>时间：</strong>2025.12 - 2026.02 | <strong>角色：</strong>独立开发</p>
+            <ul>
+                <li>集成 YOLO 目标检测，实时视频流处理（≥25 FPS）</li>
+                <li>多目标追踪算法，支持目标 ID 保持和轨迹记录</li>
+                <li>开发 PyQt 界面，参数配置、结果可视化、日志导出</li>
+                <li>坐标输出模块，支持串口/网络协议与外部设备通信</li>
+            </ul>
+            <p><strong>GitHub：</strong><a href="#">[项目链接]</a></p>
+        </div>
+
+        <h2>🎓 教育背景</h2>
+        <div class="education">
+            <div class="education-item">
+                <p><strong>时间：</strong>2023.09 - 2026.06</p>
+                <p><strong>学校：</strong>[学校名称]</p>
+                <p><strong>专业：</strong>[专业名称]</p>
+                <p><strong>学历：</strong>专科</p>
+            </div>
+            <div class="education-item">
+                <p><strong>主修课程：</strong></p>
+                <ul>
+                    <li>数字图像处理</li>
+                    <li>Python 程序设计</li>
+                    <li>数据结构与算法</li>
+                    <li>机器学习基础</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>💡 自我评价</h2>
+        <ul style="margin-left: 20px;">
+            <li><strong>学习能力强：</strong>20 岁，对 AI 视觉有强烈兴趣，能通过自学掌握新技术并落地项目</li>
+            <li><strong>工程思维：</strong>注重代码质量和项目完整性，每个项目都包含文档、测试、部署方案</li>
+            <li><strong>问题驱动：</strong>善于从实际问题出发设计解决方案，而非单纯套用技术</li>
+            <li><strong>职业定位清晰：</strong>明确希望从事算法开发方向，对工业视觉落地有持续学习意愿</li>
+        </ul>
+
+        <h2>📍 附加信息</h2>
+        <ul style="margin-left: 20px;">
+            <li><strong>可入职时间：</strong>随时</li>
+            <li><strong>期望城市：</strong>[填写]</li>
+            <li><strong>期望薪资：</strong>面议（更看重技术成长空间）</li>
+        </ul>
+
+        <div class="note">
+            <strong>📝 使用说明：</strong>
+            <ul style="margin: 10px 0 0 20px;">
+                <li>将 <code>[方括号内容]</code> 替换为你的真实信息</li>
+                <li>GitHub 项目上传后填入链接</li>
+                <li>可按 Ctrl+P 打印为 PDF，或保存为 Word 进一步编辑</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>最后更新：2026-03-24 | 求职意向：机器视觉算法工程师 / AI 视觉工程师</p>
+        </div>
+    </div>
+</body>
+</html>
