@@ -32,6 +32,15 @@
         .edu-right { color: #888; font-size: 14px; }
         .courses { font-size: 13px; color: #666; margin-top: 8px; padding-left: 15px; }
         
+        /* 实习经历 */
+        .internship { background: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 18px; border-left: 4px solid #f59e0b; }
+        .internship-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+        .company { font-size: 16px; font-weight: 700; color: #2c3e50; }
+        .position { font-size: 12px; color: #f59e0b; background: #fef3c7; padding: 4px 10px; border-radius: 12px; }
+        .internship-meta { font-size: 13px; color: #888; margin-bottom: 10px; }
+        .internship ul { margin-left: 20px; }
+        .internship li { margin: 6px 0; font-size: 14px; color: #555; }
+        
         /* 技能 */
         .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .skill-item { background: #f8f9fa; padding: 12px 15px; border-radius: 6px; border-left: 3px solid #667eea; }
@@ -46,6 +55,9 @@
         .project-meta { font-size: 13px; color: #888; margin-bottom: 10px; }
         .project ul { margin-left: 20px; }
         .project li { margin: 6px 0; font-size: 14px; color: #555; }
+        .project-link { margin-top: 10px; font-size: 13px; color: #667eea; }
+        .project-link a { color: #667eea; text-decoration: none; }
+        .project-link a:hover { text-decoration: underline; }
         
         /* 自我评价 */
         .self-eval ul { list-style: none; }
@@ -92,7 +104,7 @@
                 <div class="info-item"><span>🎂</span><span>20 岁</span></div>
                 <div class="info-item"><span>🎓</span><span>专科（应届）</span></div>
                 <div class="info-item"><span>📍</span><span contenteditable="true">[期望城市]</span></div>
-                <div class="info-item"><span>🔗</span><span contenteditable="true">GitHub: [上传后填入]</span></div>
+                <div class="info-item"><span>🔗</span><span contenteditable="true">[期望岗位]</span></div>
             </div>
         </div>
         
@@ -111,6 +123,25 @@
                 </div>
                 <div class="courses">
                     <strong>主修课程：</strong>数字图像处理、Python 程序设计、数据结构与算法、机器学习基础
+                </div>
+            </div>
+            
+            <!-- 实习经历 -->
+            <div class="section">
+                <div class="section-title">💼 实习经历</div>
+                
+                <div class="internship">
+                    <div class="internship-header">
+                        <span class="company">江苏远航精密</span>
+                        <span class="position">开条工 / 产线实习</span>
+                    </div>
+                    <div class="internship-meta">202X.XX - 202X.XX | 1 个月</div>
+                    <ul>
+                        <li>在镍带生产第一线实习，了解金属卷材生产工艺流程</li>
+                        <li>接触赛默裴视（Thermo Fisher）表面检测系统，观察机器视觉在工业质检中的实际应用</li>
+                        <li>学习镍卷表面缺陷识别标准（划痕、氧化、脏污等），理解工业检测的实际需求</li>
+                        <li>这段经历让我认识到 AI 视觉在工业场景的落地价值，坚定了从事该方向的决心</li>
+                    </ul>
                 </div>
             </div>
             
@@ -153,6 +184,9 @@
                         <li>实现数据增强策略（随机翻转、旋转、颜色抖动），有效抑制过拟合，提升泛化能力</li>
                         <li>开发 Gradio Web 界面，实现端到端的图片上传→预测→结果展示全流程</li>
                     </ul>
+                    <div class="project-link">
+                        <strong>GitHub：</strong><a href="https://github.com/GCPD141/industrial-defect-detection" target="_blank">github.com/GCPD141/industrial-defect-detection</a>
+                    </div>
                 </div>
                 
                 <div class="project">
@@ -167,6 +201,9 @@
                         <li>开发 PyQt 图形界面，支持参数配置、结果可视化、日志导出功能</li>
                         <li>设计坐标输出模块，支持串口/网络协议与外部设备（如云台）通信</li>
                     </ul>
+                    <div class="project-link">
+                        <strong>GitHub：</strong><a href="#" contenteditable="true">[项目链接]</a>
+                    </div>
                 </div>
             </div>
             
