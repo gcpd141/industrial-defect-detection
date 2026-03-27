@@ -1,14 +1,15 @@
 # Industrial Defect Detection System
 
-Deep learning-based industrial surface defect detection system with **single-image detection**, **batch detection**, and **defect location** features.
+Deep learning-based industrial surface defect detection system with **web interface** for viewing results.
 
 ## 🎯 Features
 
 - **Data Generation**: Simulated defect images or use real datasets
 - **Model Training**: ResNet18 transfer learning
-- **Single Image Detection**: Upload one image at a time
+- **Single Image Detection**: Upload one image at a time via web
 - **Batch Detection**: Detect entire folders, auto-classify, generate reports ⭐
 - **Defect Location**: Mark defect positions for review ⭐
+- **Result Viewer**: **Web gallery to view and share results** ⭐NEW!
 
 ## 📦 Project Structure
 
@@ -17,9 +18,10 @@ industrial-defect-detection/
 ├── src/
 │   ├── generate_data.py    # Data generation
 │   ├── train.py            # Model training
-│   ├── app.py              # Gradio web interface
+│   ├── app.py              # Gradio web interface (single detection)
 │   ├── batch_detect.py     # Batch detection ⭐
-│   └── locate_defect.py    # Defect location ⭐
+│   ├── locate_defect.py    # Defect location ⭐
+│   └── view_results.py     # Result viewer (web gallery) ⭐NEW!
 ├── data/                   # Dataset directory
 ├── models/                 # Trained models
 ├── detection_result/       # Batch detection results (auto-generated)
@@ -30,45 +32,99 @@ industrial-defect-detection/
 
 ## 🚀 Quick Start (Windows)
 
-### Option 1: Double-click to run (Recommended)
+### Step-by-Step Guide
 
-1. **Double-click** `start.bat`
-2. **Enter number** to select function:
-   - `[1]` Train Model (first time only)
-   - `[2]` Web Detection Interface
-   - `[3]` Batch Detection
-   - `[4]` Defect Location
+#### 1️⃣ First Time Setup (Do this once)
 
-### Option 2: Command Line
+**Double-click**: `1-train.bat`
 
-```cmd
-# 1. Install dependencies
-pip install -r requirements.txt
+This will:
+- Generate test data (if needed)
+- Train the AI model
+- Save model to `models\defect_detection_resnet18.pth`
 
-# 2. Generate test data (or use your own)
-cd src
-python generate_data.py ..\data 100
+⏱️ Takes about 5-10 minutes. **Only needed once!**
 
-# 3. Train model
-python train.py
+---
 
-# 4. Web interface
-python app.py
-# Open browser: http://localhost:7860
+#### 2️⃣ Run Batch Detection
 
-# 5. Batch detection
-python batch_detect.py models\defect_detection_resnet18.pth data detection_result 0.5
+**Double-click**: `3-batch.bat`
 
-# 6. Defect location
-python locate_defect.py models\defect_detection_resnet18.pth data\bad\bad_0000_scratch.png 4 0.7
+This will:
+- Detect all images in `data\` folder
+- Sort into `合格品\` (good) and `缺陷品\` (defective)
+- Generate report
+- **Automatically open result viewer in browser!** 🎉
+
+---
+
+#### 3️⃣ View Results in Browser
+
+After batch detection completes, your browser will open automatically at:
+```
+http://localhost:7861
 ```
 
-## 📊 Results
+**Or manually**: Double-click `5-view.bat`
 
-After batch detection, you'll get:
-- `detection_result\合格品\` - Good products
-- `detection_result\缺陷品\` - Defective products  
-- `detection_result\检测报告.md` - Detailed report
+**What you'll see**:
+- 📊 Statistics (total count, pass/fail rates)
+- 📋 Detailed report
+- 🖼️ **Image gallery** (browse all results)
+- 📤 **Easy to share** - just show the browser window!
+
+---
+
+#### 4️⃣ Other Options
+
+| File | What it does | When to use |
+|------|-------------|-------------|
+| `2-web.bat` | Single image detection | Test one image at a time |
+| `4-locate.bat` | Mark defect location | Show exactly where defect is |
+| `5-view.bat` | View results gallery | Show results to others |
+
+---
+
+## 🖼️ Result Viewer Features
+
+The web viewer (`5-view.bat`) provides:
+
+### Tab 1: 📊 Statistics Overview
+- Total count
+- Pass/fail numbers and percentages
+- Full detection report
+
+### Tab 2: 🖼️ Image Gallery
+- Browse all **good products**
+- Browse all **defective products**
+- Grid view (4 columns)
+- Image names displayed
+
+### Perfect for:
+- ✅ Showing results to colleagues
+- ✅ Presenting to clients
+- ✅ Quality review meetings
+- ✅ Sharing via screen share
+
+---
+
+## 📊 Example Output
+
+After running batch detection:
+
+```
+detection_result/
+├── 合格品/           ← Good products (20 images)
+├── 缺陷品/           ← Defective products (20 images)
+└── 检测报告.md       ← Detailed report
+```
+
+**To view**: 
+- Option A: Open browser → `http://localhost:7861` (recommended)
+- Option B: Open `detection_result\检测报告.md` in browser
+
+---
 
 ## 📋 Requirements
 
@@ -89,11 +145,17 @@ numpy>=1.24.0
 tqdm>=4.65.0
 ```
 
-## 📝 Notes
+## 💡 Workflow Summary
 
-- **First run**: Must train model first (run option 1 or `1-train.bat`)
-- **Model location**: `models\defect_detection_resnet18.pth`
-- **Threshold**: Default 0.5 (adjust based on your needs)
+```
+1st time: 1-train.bat → Wait 5-10 min → Model ready ✅
+
+Every time after:
+1. Put your images in data\ folder
+2. Double-click 3-batch.bat
+3. Browser opens automatically
+4. Show results to others! 🎉
+```
 
 ## 📄 License
 

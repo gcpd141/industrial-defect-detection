@@ -25,4 +25,7 @@ echo Complete!
 echo Results: detection_result\
 echo ========================================
 echo.
+echo Opening result viewer in browser...
+start "" "5-view.bat"
+
 pause
