@@ -17,7 +17,12 @@ class DefectLocator:
     def __init__(self, model_path):
         """初始化模型"""
         print(f"加载模型：{model_path}")
-        self.model = torch.load(model_path, map_location='cpu', weights_only=False)
+        checkpoint = torch.load(model_path, map_location='cpu', weights_only=False)
+        
+        # 创建模型并加载权重
+        from train import create_model
+        self.model = create_model(num_classes=2, pretrained=False)
+        self.model.load_state_dict(checkpoint['model_state_dict'])
         self.model.eval()
         self.transform = transforms.Compose([
             transforms.Resize((224, 224)),

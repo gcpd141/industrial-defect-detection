@@ -17,7 +17,12 @@ class BatchDetector:
     def __init__(self, model_path):
         """初始化模型"""
         print(f"加载模型：{model_path}")
-        self.model = torch.load(model_path, map_location='cpu', weights_only=False)
+        checkpoint = torch.load(model_path, map_location='cpu', weights_only=False)
+        
+        # 创建模型并加载权重
+        from train import create_model
+        self.model = create_model(num_classes=2, pretrained=False)
+        self.model.load_state_dict(checkpoint['model_state_dict'])
         self.model.eval()
         self.transform = transforms.Compose([
             transforms.Resize((224, 224)),
@@ -53,7 +58,8 @@ class BatchDetector:
         print(f"\n开始检测：{input_folder}")
         print("-" * 50)
         
-        for img_path in input_path.glob('*.png'):
+        # 递归查找所有子目录中的图片
+        for img_path in input_path.rglob('*.png'):
             # 检测
             img = Image.open(img_path).convert('RGB')
             x = self.transform(img).unsqueeze(0)
@@ -87,11 +93,14 @@ class BatchDetector:
         defect_count = sum(1 for r in results if r['is_defect'])
         good_count = total - defect_count
         
+        good_pct = f"{good_count/total:.1%}" if total > 0 else "N/A"
+        defect_pct = f"{defect_count/total:.1%}" if total > 0 else "N/A"
+        
         print("\n" + "=" * 50)
         print(f"检测完成！")
         print(f"总数量：{total}")
-        print(f"合格品：{good_count} ({good_count/total:.1%})")
-        print(f"缺陷品：{defect_count} ({defect_count/total:.1%})")
+        print(f"合格品：{good_count} ({good_pct})")
+        print(f"缺陷品：{defect_count} ({defect_pct})")
         print(f"报告已保存：{output_path / '检测报告.md'}")
         print("=" * 50)
         
@@ -129,6 +138,10 @@ class BatchDetector:
         defect_count = sum(1 for r in results if r['is_defect'])
         good_count = total - defect_count
         
+        # 处理除零错误
+        good_pct = f"{good_count/total:.1%}" if total > 0 else "N/A"
+        defect_pct = f"{defect_count/total:.1%}" if total > 0 else "N/A"
+        
         report = f"""# 工业缺陷检测报告
 
 **生成时间**：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -142,8 +155,8 @@ class BatchDetector:
 | 项目 | 数量 | 比例 |
 |------|------|------|
 | 总数量 | {total} | 100% |
-| 合格品 | {good_count} | {good_count/total:.1%} |
-| 缺陷品 | {defect_count} | {defect_count/total:.1%} |
+| 合格品 | {good_count} | {good_pct} |
+| 缺陷品 | {defect_count} | {defect_pct} |
 
 ---
 
@@ -157,11 +170,12 @@ class BatchDetector:
                 t = r['defect_type']
                 type_count[t] = type_count.get(t, 0) + 1
         
-        if type_count:
+        if type_count and defect_count > 0:
             report += "| 缺陷类型 | 数量 | 占比 |\n"
             report += "|---------|------|------|\n"
             for t, c in sorted(type_count.items(), key=lambda x: x[1], reverse=True):
-                report += f"| {t} | {c} | {c/defect_count:.1%} |\n"
+                pct = f"{c/defect_count:.1%}"
+                report += f"| {t} | {c} | {pct} |\n"
         else:
             report += "*无缺陷品*\n"
         
